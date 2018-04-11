@@ -1,0 +1,34 @@
+{
+  "name": "DaTeng",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "firebase": "^4.12.1",
+    "lodash": "^4.17.5",
+    "react": "16.3.1",
+    "react-content-loader": "^3.1.1",
+    "react-native": "0.55.2",
+    "react-native-autogrow-input": "^0.2.1",
+    "react-native-invertible-scroll-view": "^1.1.1",
+    "react-native-keyboard-accessory": "0.0.8",
+    "react-native-material-bottom-navigation": "^0.9.0",
+    "react-native-modal": "^5.4.0",
+    "react-native-snap-carousel": "^3.6.0",
+    "react-native-swiper": "^1.5.13",
+    "react-native-timeline-listview": "^0.2.3",
+    "react-navigation": "^1.5.11"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
