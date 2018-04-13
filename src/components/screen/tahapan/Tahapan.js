@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {  View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
-import ScrollableTabView from 'react-native-scrollable-tab-view'
-import Persiapan from './Persiapan'
-import Penyelenggaraan from './Penyelenggaraan'
-import Header from '../common/Header' 
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import Persiapan from './Persiapan';
+import Penyelenggaraan from './Penyelenggaraan';
+import Header from '../../common/Header'; 
 
 export default class Home extends Component {
     constructor(props) {

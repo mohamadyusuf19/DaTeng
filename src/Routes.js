@@ -1,75 +1,22 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native'
-import BottomNavigation, { Tab,  NavigationComponent } from 'react-native-material-bottom-navigation';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import Calon from './components/screen/Calon'
-import DiskusiScreen from '../src/components/screen/diskusi/index';
 import Tips from './components/screen/Tips';
 import Pilkada from './components/screen/Pilkada';
 import Profil from './components/screen/Profil';
 import VisiMisi from './components/screen/VisiMisi'
 import Anggaran from './components/screen/Anggaran';
-import Partisipasi from './components/screen/Partisipasi';
 import Tahapan from '../src/components/screen/tahapan/Tahapan';
 import Voting from './components/screen/Voting';
-import Persiapan from './components/screen/Persiapan';
-import Penyelenggaraan from './components/screen/Penyelenggaraan';
-import Header from './components/common/Header';
-
-const TabNav = TabNavigator(
-  {
-    Paslon: { screen: Calon },
-    Tahapan: { screen: Tahapan },
-    Voting: { screen: Voting },
-    Diskusi: { screen: DiskusiScreen },
-    Wacana: { screen: Tips },    
-  },
-  {
-    swipeEnabled: false,
-    tabBarComponent: NavigationComponent,
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      bottomNavigationOptions: {
-        labelColor: 'black',
-        backgroundColor: 'red',
-        rippleColor: 'white',
-        tabs: {
-          Paslon: {
-            barBackgroundColor: '#fff',
-            labelColor: 'black',
-            icon: <Image source={require('./icon/avatar.png')} style={{ height: 18, width: 18}}/>
-          },
-          Tahapan: {
-            barBackgroundColor: '#fff',
-            labelColor: 'black',
-            icon: <Image source={require('./icon/calendar.png')}style={{ height: 18, width: 18}} />
-          },
-          Diskusi: {
-            barBackgroundColor: '#fff',
-            labelColor: 'black',
-            icon: <Image source={require('./icon/speech-bubble.png')} style={{ height: 18, width: 18}} />,
-            badgeSize: 20,
-            isBadgeVisible: true
-          },
-          Wacana: {
-            barBackgroundColor: '#fff',
-            labelColor: 'black',
-            icon: <Image source={require('./icon/lightbulb.png')} style={{ height: 18, width: 18}} />
-          },
-          Voting: {
-            barBackgroundColor: '#fff',
-            labelColor: 'black',
-            icon: <Image source={require('./icon/elections.png')} style={{ height: 20, width: 20}} />
-          },
-        }
-      }
-    }
-  }
-)
+import Persiapan from '../src/components/screen/tahapan/Persiapan';
+import Penyelenggaraan from '../src/components/screen/tahapan/Penyelenggaraan';
+import Index from './components/screen/diskusi/index';
+import Home from './components/screen/Home';
 
 const Navigasi = StackNavigator({
     Home: {
-      screen: TabNav,
+      screen: Home,
       navigationOptions: {
         header: null,
       },
@@ -98,16 +45,6 @@ const Navigasi = StackNavigator({
         title: "Anggaran",        
       },
     },
-    Partisipasi: {
-      screen: Partisipasi,
-      navigationOptions: {
-        title: "Partisipasi",
-        // headerTintColor: '#fff',  
-        // headerStyle: {
-        //   backgroundColor: '#37474F'
-        // }
-      },
-    },
     Tahapan: {
       screen: Tahapan,
       navigationOptions: {
@@ -130,12 +67,25 @@ const Navigasi = StackNavigator({
         header: null
       },
     },
-    Header: {
-      screen: Header,
+    Paslon: { 
+      screen: Calon, 
       navigationOptions: {
         header: null
       },
     },
+    Tahapan: { 
+      screen: Tahapan 
+    },
+    Voting: { 
+      screen: Voting 
+    },
+    Diskusi: { 
+      screen: Index 
+    },
+    Wacana: { 
+      screen: Tips 
+    },    
+
 });
 
 export default Navigasi

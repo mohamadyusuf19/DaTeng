@@ -10,14 +10,16 @@ import {
     ActivityIndicator
 } from 'react-native';
 import Header from '../common/Header'
-// import data from '../../data/pilkada.json'
 import Modal from "react-native-modal";
+import _ from 'lodash';
+
 const imageWidth = Dimensions.get('window').width
 
 export default class Calon extends Component {    
     state = {
-        data: [],
-        isLoading: true       
+        data: [],  
+        isLoading: true,
+        visibleModal: null     
     };
 
     componentWillMount() {
@@ -35,6 +37,7 @@ export default class Calon extends Component {
         .catch((error) => console.log('error'))
     }   
 
+    
     showProfile(indexDetail) {
         console.log(indexDetail);
         //<DetailNewsView detail={indexDetail}/>
@@ -43,34 +46,28 @@ export default class Calon extends Component {
 
     showVisiMisi(indexDetail) {
         this.props.navigation.navigate('VisiMisi', {detail: indexDetail})
-    }   
+    }  
+    
+    showLaporan(indexDetail) {
+        this.props.navigation.navigate('LaporanDana', {detail: indexDetail})
+    }  
 
-    render() {
-        console.log(this.state.data);
-        const renderLoading = () => {
-            if(this.state.isLoading) {
-                return(
-                    <ActivityIndicator
-                        color='#009688'
-                        size='large'
-                        style={styles.ActivityIndicatorStyle}
-                        animating={this.state.isLoading}/> 
-                )
-            }
-            return(
-                <FlatList
-                    ref='listRef'
-                    data={this.state.data}                                             
-                    renderItem={this.renderItem}
-                    keyExtractor={(item, index) => index.toString()}/>   
-            )
-        }       
+    render() {    
         return (
             <View>
                 <Header 
                   text="Paslon"
                 />       
-                {renderLoading()}                                                                     
+                <ActivityIndicator
+                        color='#009688'
+                        size='large'
+                        style={styles.ActivityIndicatorStyle}
+                        animating={this.state.isLoading}/>    
+                <FlatList
+                    ref='listRef'
+                    data={this.state.data}                                             
+                    renderItem={this.renderItem}
+                    keyExtractor={(item, index) => index.toString()}/>                                                                                
             </View>                               
         );
     } 
@@ -83,16 +80,10 @@ export default class Calon extends Component {
                         <View style={{justifyContent: 'center', alignItems: 'center', marginBottom: 3}}>
                             <Text style={{fontSize: 18, color: 'white'}}>Pasangan Calon Nomor Urut {(parseInt(index) + 1)}</Text>    
                         </View>
-                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 30}}>                       
-                                <View>
-                                    <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>    
-                                </View>
-                                <View>
-                                    <Text style={styles.textCenter}>&</Text>    
-                                </View>
-                                <View>
-                                    <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>    
-                                </View>                 
+                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 30}}>                                                      
+                                    <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>                                   
+                                    <Text style={styles.textCenter}>&</Text>                                    
+                                    <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>                                    
                         </View>               
                         <View style={styles.centerButton}>
                             <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showProfile([
@@ -116,14 +107,21 @@ export default class Calon extends Component {
                                { title: 'Visi', data: item.visimisi.visi}
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
-                            </TouchableOpacity>                                           
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showLaporan([
+                                item.nama_kepala_daerah, 
+                            ])}>                           
+                                <Text style={{color: '#fff'}}>Laporan Dana</Text>
+                            </TouchableOpacity>                                  
+                                 
                         </View>
                     </View>            
                 </View>         
-            </View>
-            
+            </View>            
         )
     }
+
+    
 }
 
 const styles = StyleSheet.create({
@@ -134,13 +132,12 @@ const styles = StyleSheet.create({
     },
     column: {
         flexDirection: 'column',
-        flex: 1
     },
     main: {
         flex: 1,
         elevation: 3,
         height: 220, 
-        width: '85%',         
+        width: '90%',         
         borderRadius: 10,
         backgroundColor: '#383838',   
         margin: 5,
@@ -149,7 +146,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     images: {        
-        flex: 1,
         height: 180, 
         width: 180,
         borderRadius: 90,
@@ -175,13 +171,12 @@ const styles = StyleSheet.create({
         margin: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1
     },
     contact: {
         height: 27,
         width: 100,       
         borderRadius: 5,
-        backgroundColor: '#c02d28',
+        backgroundColor: '#e66225',
         margin: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -190,7 +185,9 @@ const styles = StyleSheet.create({
         backgroundColor: "white",      
         height: 500,        
         borderRadius: 4,
-        borderColor: "rgba(0, 0, 0, 0.1)"
+        borderColor: "rgba(0, 0, 0, 0.1)",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     bottomModal: {
         justifyContent: "flex-end",
@@ -204,5 +201,71 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'    
-    }
+    },   
 });
+
+// _renderButton = (text, onPress) => (
+//     <TouchableOpacity onPress={onPress}>
+//       <View style={styles.button}>
+//         <Text style={{color: '#fff'}}>{text}</Text>
+//       </View>
+//     </TouchableOpacity>
+//   );
+// fetchDana = () => {
+//     fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/danapaslon')
+//     .then((res) => res.json())
+//     .then((dana) => this.setState({
+//         dana,
+//     }))
+//     .catch((error) => console.log('error'))
+//  }
+
+// {this._renderButton("Penyelenggaraan", () =>
+// this.setState({ 
+//     visibleModal: 2 
+// })
+// )}   
+
+// <Modal
+// isVisible={this.state.visibleModal === 2}
+// style={styles.bottomModal}   
+// onSwipe={() => this.setState({ visibleModal: null })}
+// swipeDirection="down"       
+// >
+// {_renderModalPenyelenggaraan()}
+// </Modal>
+// const dataState =  this.state.data.filter(item => item.nama_kepala_daerah);
+// const dataFilter = this.state.dana.filter(item => item.nama_kepala_daerah);
+// const DataFix = (dataState == dataFilter);
+// console.log(dataState)
+// const  _renderModalPenyelenggaraan = () => (
+//       <View style={styles.modalContent}>
+//         <View style={styles.viewModal}>
+//           <View style={{paddingRight: 40}}><Text style={{color: '#000', fontSize: 20}}>Penyelenggaraan</Text></View>
+//         </View>
+//         <FlatList
+//           ref='listRef'
+//           data={this.state.dana}
+//           keyExtractor={(item, index) => index.toString()}
+//           renderItem={this.renderItemDana}
+//           />
+//       </View>
+//     );
+// renderItemDana = ({item, index}) => {
+//     return(
+//         <View>
+//             <View style={styles.column}>    
+//                 <View style={styles.main}>
+//                     <View style={styles.profil}>
+//                         <Text style={{color: '#fff', fontSize: 14}} >Dana Kampanye</Text>                     
+//                     </View>                                                   
+//                     <Text style={styles.textCenter}>NAMA : {item.nama_kepala_daerah}</Text>
+//                     <Text style={styles.textCenter}>NAMA WAKIL : {item.nama_wakil_kepala_daerah}</Text>
+//                     <Text style={styles.textCenter}>TANGGAL PENYERAHAN : {item.tanggal_penyerahan}</Text>
+//                     <Text style={styles.textCenter}>WAKTU PENYERAHAN : {item.waktu_penyerahan}</Text>
+//                     <Text style={styles.textCenter}>LAPORAN AWAL DANA KAMPANYE : {item.laporan_awal_dana_kampanye}</Text>
+//                 </View>                                     
+//             </View>  
+//         </View>        
+//     )
+// }

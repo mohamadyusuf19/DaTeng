@@ -8,7 +8,7 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native';
-import Header from '../common/Header'
+import Header from '../../common/Header';
 const imageWidth = Dimensions.get('window').width
 
 export default class Persiapan extends Component {

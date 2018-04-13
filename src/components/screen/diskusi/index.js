@@ -1,11 +1,38 @@
-import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
-import Discus from './pages/Discus';
-import Home from './pages/Home';
+import React from 'react';
+import {
+  Platform,
+  StatusBar,
+} from 'react-native';
 
-const DiskusiScreen = StackNavigator({
- home: {screen: Home},
- discus: {screen: Discus},
-});
+import { Router, Scene } from 'react-native-router-flux';
+import Layout from './libs/Layout';
+import Store from './libs/Store';
+import Backend from './libs/Backend';
 
-module.exports = DiskusiScreen
+import Home from './components/Home';
+import Channels from './components/Channels';
+import Chat from './components/Chat';
+
+export default class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    Backend.setStore(Store);
+    Backend.init();
+    if (Platform.OS === 'ios') {
+      StatusBar.setBarStyle('light-content');
+    }
+  }
+
+
+  render() {
+    return (
+      <Router>
+        <Scene key="root">
+          <Scene key="home" hideNavBar={true} component={Home}/>
+          <Scene key="channels" hideNavBar={false} component={Channels} title='Channels' {...Layout.navigationBar } type="reset"/>
+          <Scene key="chat" hideNavBar={false} component={Chat} title='' {...Layout.navigationBar}/>
+        </Scene>
+      </Router>
+    );
+  }
+}
