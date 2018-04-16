@@ -6,10 +6,12 @@ import {
   View,
 } from 'react-native';
 
-import { Actions } from 'react-native-router-flux';
-import Layout from '../libs/Layout';
+import LayoutChat from './LayoutChat';
+import HeaderFunction from '../common/HeaderFunction';
 
 export default class Channels extends React.Component {
+
+  state = { navigate: this.props.navigation.navigate }
 
   renderRow(channelName) {
 
@@ -17,11 +19,8 @@ export default class Channels extends React.Component {
       
       <TouchableOpacity
         onPress={() => {
-          Actions.chat({
-            channelName,
-            title: channelName.toUpperCase(),
-          });
-        }}
+          this.state.navigate('Chating', { channel: channelName })
+      }}
 
       >
       <View style={{borderRadius: 4, 
@@ -33,7 +32,7 @@ export default class Channels extends React.Component {
             shadowOpacity: 0.1,
             shadowRadius: 2,
             shadowOffset:{width: 0, height: 0}}}>
-        <Text style={Layout.channelName}>
+        <Text style={LayoutChat.channelName}>
           {channelName}
         </Text>
       </View>
@@ -43,13 +42,16 @@ export default class Channels extends React.Component {
 
   render() {
     return (
-      <ScrollView style={Layout.channelsContainer}>
+      <View style={{ flex: 1 }}>
+        <HeaderFunction text='Channels' onPress={() => this.props.navigation.goBack() }/>
+        <ScrollView style={LayoutChat.channelsContainer}>
         {this.renderRow('diskusi sosial')}
         {this.renderRow('diskusi politik')}
         {this.renderRow('diskusi pemilihan')}
         {this.renderRow('diskusi santai')}
         {this.renderRow('diskusi partai')}
       </ScrollView>
+      </View>
     );
   }
 }

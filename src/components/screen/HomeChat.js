@@ -6,20 +6,21 @@ import {
   StyleSheet,
   Keyboard
 } from 'react-native';
-
-import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import Layout from '../libs/Layout';
-import Store from '../libs/Store';
+import LayoutChat from './LayoutChat';
+import Store from '../../Store';
+import HeaderFunction from '../common/HeaderFunction';
 
-class Home extends React.Component {
+class HomeChat extends React.Component {
   state = {
     name: '',
+    navigate: this.props.navigation.navigate
   };
 
   render() {
     return (
-      <View style={Layout.homeContainer}>
+      <View style={LayoutChat.homeContainer}>
+        <HeaderFunction text='Diskusi' onPress={() => this.props.navigation.goBack()}/>
         <Text
           style={{
             marginTop: 60,
@@ -38,7 +39,7 @@ class Home extends React.Component {
             onChangeText={(name) => {
               this.setState({name});
             }}
-            {...Layout.textInput}
+            {...LayoutChat.textInput}
           />
         </View>
         <View style={{
@@ -60,7 +61,7 @@ class Home extends React.Component {
             onPress={() => {
               Store.setName(this.state.name);
               Keyboard.dismiss()
-              Actions.channels();
+              this.state.navigate('Channel')
             }}
           >
             Masuk
@@ -79,4 +80,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Home;
+export default HomeChat;

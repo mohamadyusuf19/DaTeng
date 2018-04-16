@@ -4,16 +4,17 @@ import {
 } from 'react-native';
 
 import { GiftedChat } from 'react-native-gifted-chat';
-import Backend from '../libs/Backend';
-import Store from '../libs/Store';
-import Layout from '../libs/Layout';
+import Backend from '../../Backend';
+import Store from '../../Store';
+import LayoutChat from './LayoutChat';
+import HeaderFunction from '../common/HeaderFunction';
 
-export default class Chat extends React.Component {
+class Chat extends React.Component {
   state = {
     messages: []
   };
   componentWillMount() {
-    Backend.loadMessages(this.props.channelName, (message) => {
+    Backend.loadMessages(this.props.navigation.state.params.channel, (message) => {
       this.setState((previousState) => {
         return {
           messages: GiftedChat.append(previousState.messages, message),
@@ -25,8 +26,10 @@ export default class Chat extends React.Component {
     Backend.closeChat();
   }
   render() {
+
     return (
-      <View style={Layout.chatContainer}>
+      <View style={LayoutChat.chatContainer}>
+        <HeaderFunction text={this.props.navigation.state.params.channel} onPress={() => this.props.navigation.goBack() }/>
         <GiftedChat
           messages={this.state.messages}
           onSend={(messages) => {
@@ -37,9 +40,11 @@ export default class Chat extends React.Component {
             name: Store.getName(),
             avatar: Store.getAvatar(),
           }}
-          {...Layout.GiftedChat}
+          {...LayoutChat.GiftedChat}
         />
       </View>
     );
   }
 }
+
+export default Chat;

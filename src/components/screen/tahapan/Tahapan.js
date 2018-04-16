@@ -5,6 +5,7 @@ import Persiapan from './Persiapan';
 import Penyelenggaraan from './Penyelenggaraan';
 import Header from '../../common/Header'; 
 
+
 export default class Home extends Component {
     constructor(props) {
         super(props)
@@ -25,9 +26,10 @@ export default class Home extends Component {
                     onChangeTab={(index) => this.handleChangeTab(index)}
                     tabBarUnderlineColor="#fff"
                     tabBarUnderlineStyle={{backgroundColor: "#fff"}}
-                    tabBarBackgroundColor ="#fff"
+                    tabBarBackgroundColor ="#d2d8e0"
                     tabBarActiveTextColor="#000"
                     tabBarInactiveTextColor="#88b0ac"
+                    tabBarPosition='bottom'
                     >
                     <Persiapan tabLabel="PERSIAPAN" {...this.props} />
                     <Penyelenggaraan tabLabel="PENYELENGGARAAN" {...this.props} />                    

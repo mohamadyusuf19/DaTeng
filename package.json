@@ -18,7 +18,6 @@
     "react-native-invertible-scroll-view": "^1.1.1",
     "react-native-keyboard-accessory": "0.0.8",
     "react-native-modal": "^5.4.0",
-    "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-snap-carousel": "^3.6.0",
     "react-native-swiper": "^1.5.13",

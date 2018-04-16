@@ -1,134 +1,31 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet,
-    View,
-    Text,
-    FlatList,
-    Image,
-    Dimensions,
-    TouchableOpacity
-} from 'react-native';
-import Header from '../../common/Header';
-const imageWidth = Dimensions.get('window').width
+import React from 'react';
+import Timeline from 'react-native-timeline-listview';
 
-export default class Penyelenggaraan extends Component {
-    constructor(props) {
-        super(props);
-        this.renderItem = this.renderItem.bind(this);
-    }
-
-    state = {
-      data: []
-    }
-
-    componentWillMount() {
-      this.fetchData()
-    }
-
-    fetchData = () => {
-      fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/tahapanpilgub')
-      .then((res) => res.json())
-      .then((data) => this.setState({
-        data,
-      }))
-      .catch((error) => console.log('error'))
-    }
-
-    render() {       
-        return (
-            <View style={styles.container}>                                    
-                <FlatList
-                    ref='listRef'
-                    data={this.state.data.penyelenggaraan}
-                    renderItem={this.renderItem}
-                    keyExtractor={(item, index) => index.toString()}/>                    
-            </View>
-        );
-    }
-
-    renderItem({item, index}) {
-
-        return (     
-            <View style={styles.row}>                           
-              {/* <View style={styles.center}> 
-                <View style={styles.garisAtas}/>          
-                <TouchableOpacity style={styles.titik}>  
-                    <Text style={styles.text}>{index + 1}</Text>                            
-                </TouchableOpacity>
-                <View style={styles.garis}/>                                                          
-              </View> */}
-              <View style={{marginTop: 15}}>  
-                <View style={styles.waktuAkhir}>
-                  <Text style={styles.isi}>{item.tgl_awal}    s/d    {item.tgl_akhir}</Text>
-                </View>              
-                <View style={styles.deskripsi}>                  
-                  <Text style={styles.isiDeskripsi}>{item.detail}</Text>
-                </View>                
-              </View>                            
-            </View>          
-        )
-    }
-    
+class Penyelenggaraan extends React.Component{
+  constructor(){
+    super()
+    this.data = [
+      { title: "27-Sep-2017 / 27-Sep-2017", description: "Perencanaan Program dan Anggaran", },
+      { title: "27-Sep-2017 / 27-Sep-2017", description: "Penyusunan dan Penandatanganan Naskah Perjanjian Hibah Daerah (NPHD)", },
+      { title: "31-May-2018 / 31-May-2018", description: "Penyusunan dan Pengesahan Peraturan Penyelenggaraan Pemilihan", },
+      { title: "14-Jun-2017 / 23-Jun-2018", description: "Sosialisasi kepada Masyarakat", },
+      { title: "14-Jun-2017 / 26-Jun-2018", description: "Penyuluhan/Bimbingan Teknis Kepada KPU Provinsi/KIP Aceh, KPU/KIP Kabupaten/Kota, PPK, PPS dan KPPS", },
+      { title: "2-Oct-2017  / 3-Jun-2018" ,  description: "Pembentukan PPK, PPS, dan KPPS", },
+      { title: "12-Oct-2017 / 11-Jun-2018", description: "Pemantauan Pemiliham", },
+      { title: "24-Nov-2017 / 30-Dec-2017", description: "Pengolahan Daftar Penduduk Potensial Pemilih Pemilihan (DP4)", },
+      { title: "30-Dec-2017 / 27-Jun-2018", description: "Pemutakhiran Data dan Daftar Pemilih", }
+    ]
+  }
+  
+  render(){
+    return(
+        <Timeline
+          data={this.data}
+          showTime={false}
+          descriptionStyle={{ color: 'gray', fontSize: 16}}
+        />
+    )
+  }
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,      
-      justifyContent: 'center',
-      alignItems: 'center',      
-    },
-    row: {
-      flexDirection: 'row',             
-    },   
-    waktuAkhir: {
-      height: 20,
-      width: 250,
-      borderRadius: 15,
-      backgroundColor: '#c02d28',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    garis: {
-      height: 150,
-      width: 2,
-      backgroundColor: '#9099a8',
-      marginRight: 30, 
-    },
-    garisAtas: {
-        height: 15,
-        width: 2,
-        backgroundColor: '#9099a8',
-        marginRight: 30, 
-    },
-    deskripsi: {
-      height: 100,
-      width: 250,
-      marginTop: 10,
-      padding: 10,
-      borderTopRightRadius: 10,
-      borderBottomLeftRadius: 10,
-      borderBottomRightRadius: 10,            
-      backgroundColor: '#383838',   
-    },
-    titik: {
-      backgroundColor: '#e66225',
-      height: 20,
-      width: 20,
-      borderRadius: 10, 
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginRight: 30
-
-    },
-    center: {
-      alignItems: 'center',
-    },
-    isi: {
-      color: '#fff',
-      fontSize: 13
-    },
-    isiDeskripsi: {
-      fontSize: 16,
-      color: '#fff'
-    },        
-});
+export default Penyelenggaraan;

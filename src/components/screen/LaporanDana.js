@@ -6,20 +6,20 @@ const imageWidth = Dimensions.get('window').width*0.85
 const imageHeight = Dimensions.get('window').height*0.4
 export default class LaporanDana extends Component {
     state = {
-       data: []
+        data: []
     }
 
     componentWillMount() {
-       this.fetchData()
+        this.fetchData()
     }
 
     fetchData = () => {
-       fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/danapaslon')
-       .then((res) => res.json())
-       .then((data) => this.setState({
-           data,
-       }))
-       .catch((error) => console.log('error'))
+        fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/danapaslon')
+        .then((res) => res.json())
+        .then((data) => this.setState({
+            data,
+        }))
+        .catch((error) => console.log('error'))
     }
 
         render() {   

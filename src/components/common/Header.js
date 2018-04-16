@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         height: 60,
         width: '100%',
         elevation: 3,
-        flexDirection: 'row',        
+        flexDirection: 'row'
     },
     textHeader: {
         color: '#000',

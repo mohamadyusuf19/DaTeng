@@ -7,9 +7,10 @@ import {
     ImageBackground,
     Dimensions,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    Image
 } from 'react-native';
-import Header from '../common/Header'
+import HeaderFunction from '../common/HeaderFunction';
 import Modal from "react-native-modal";
 import _ from 'lodash';
 
@@ -23,7 +24,7 @@ export default class Calon extends Component {
     };
 
     componentWillMount() {
-       this.fetchData();
+        this.fetchData();
     }
         
     fetchData = () => {               
@@ -33,7 +34,7 @@ export default class Calon extends Component {
             data,
             isLoading: false,
             loadingHeight: 0,
-         }))
+        }))
         .catch((error) => console.log('error'))
     }   
 
@@ -55,9 +56,7 @@ export default class Calon extends Component {
     render() {    
         return (
             <View>
-                <Header 
-                  text="Paslon"
-                />       
+            <HeaderFunction text="Paslon" onPress={() => this.props.navigation.goBack()}/> 
                 <ActivityIndicator
                         color='#009688'
                         size='large'
@@ -73,18 +72,27 @@ export default class Calon extends Component {
     } 
     
     renderItem = ({item, index}) => {
+        const ImageIcon = () => {
+            if(index == 0){
+                return (
+                    <Image source={require('../../icon/ganjar.png')} style={{height: 220, width: imageWidth, flex:1}} />
+                )
+            } return (<Image source={require('../../icon/said.png')} style={{height: 220, width: imageWidth, flex:1}} />)
+        }
+
         return(
             <View style={styles.container}>
                 <View style={styles.main}>
-                    <View style={styles.column}>                
-                        <View style={{justifyContent: 'center', alignItems: 'center', marginBottom: 3}}>
-                            <Text style={{fontSize: 18, color: 'white'}}>Pasangan Calon Nomor Urut {(parseInt(index) + 1)}</Text>    
+                    <View style={styles.column}>
+                        <View style={{opacity: 0.2}}>
+                        {ImageIcon()}
+                        </View>                                        
+                        <View style={{position: 'absolute', alignItems: 'center', justifyContent: 'center'}}>
+                            <Text style={{fontSize: 20, color: '#fff', marginBottom: 30, marginTop: 15}}>Pasangan Nomor Urut {index + 1}</Text>
+                            <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>
+                            <Text style={styles.textCenter}>&</Text>
+                            <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>
                         </View>
-                        <View style={{justifyContent: 'center', alignItems: 'center', margin: 30}}>                                                      
-                                    <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>                                   
-                                    <Text style={styles.textCenter}>&</Text>                                    
-                                    <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>                                    
-                        </View>               
                         <View style={styles.centerButton}>
                             <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showProfile([
                                 item.nama_kepala_daerah,
@@ -97,14 +105,14 @@ export default class Calon extends Component {
                                 item.tempat_lahir_wakil,
                                 item.tanggal_lahir_wakil,
                                 item.pekerjaan_wakil_kepala_daerah,
-                             ])}>
+                            ])}>
                                 <Text style={{color: '#fff'}}>Profile</Text>
                             </TouchableOpacity> 
-                            <TouchableOpacity style={styles.contact} onPress={()=>this.showVisiMisi([
-                               { title: 'Misi', data: item.visimisi.misi},
-                               { title: 'Program', data: item.visimisi.program},
-                               { title: 'Detail', data: item.visimisi.detail},
-                               { title: 'Visi', data: item.visimisi.visi}
+                            <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showVisiMisi([
+                                { title: 'Misi', data: item.visimisi.misi},
+                                { title: 'Program', data: item.visimisi.program},
+                                { title: 'Detail', data: item.visimisi.detail},
+                                { title: 'Visi', data: item.visimisi.visi}
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
                             </TouchableOpacity>
@@ -113,7 +121,6 @@ export default class Calon extends Component {
                             ])}>                           
                                 <Text style={{color: '#fff'}}>Laporan Dana</Text>
                             </TouchableOpacity>                                  
-                                 
                         </View>
                     </View>            
                 </View>         
@@ -132,11 +139,12 @@ const styles = StyleSheet.create({
     },
     column: {
         flexDirection: 'column',
+        alignItems: 'center',    
     },
     main: {
         flex: 1,
         elevation: 3,
-        height: 220, 
+        height: 230, 
         width: '90%',         
         borderRadius: 10,
         backgroundColor: '#383838',   
@@ -157,7 +165,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',         
-        padding: 5,
+        position: 'absolute',
+        marginTop: 180,
+        flex: 1
     },
     textCenter: {
         fontSize: 16,
@@ -165,7 +175,7 @@ const styles = StyleSheet.create({
     },
     contactProfile: {
         height: 27,
-        width: 100,      
+        width: 110,      
         borderRadius: 5,
         backgroundColor: '#e66225',
         margin: 5,
@@ -203,69 +213,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center'    
     },   
 });
-
-// _renderButton = (text, onPress) => (
-//     <TouchableOpacity onPress={onPress}>
-//       <View style={styles.button}>
-//         <Text style={{color: '#fff'}}>{text}</Text>
-//       </View>
-//     </TouchableOpacity>
-//   );
-// fetchDana = () => {
-//     fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/danapaslon')
-//     .then((res) => res.json())
-//     .then((dana) => this.setState({
-//         dana,
-//     }))
-//     .catch((error) => console.log('error'))
-//  }
-
-// {this._renderButton("Penyelenggaraan", () =>
-// this.setState({ 
-//     visibleModal: 2 
-// })
-// )}   
-
-// <Modal
-// isVisible={this.state.visibleModal === 2}
-// style={styles.bottomModal}   
-// onSwipe={() => this.setState({ visibleModal: null })}
-// swipeDirection="down"       
-// >
-// {_renderModalPenyelenggaraan()}
-// </Modal>
-// const dataState =  this.state.data.filter(item => item.nama_kepala_daerah);
-// const dataFilter = this.state.dana.filter(item => item.nama_kepala_daerah);
-// const DataFix = (dataState == dataFilter);
-// console.log(dataState)
-// const  _renderModalPenyelenggaraan = () => (
-//       <View style={styles.modalContent}>
-//         <View style={styles.viewModal}>
-//           <View style={{paddingRight: 40}}><Text style={{color: '#000', fontSize: 20}}>Penyelenggaraan</Text></View>
-//         </View>
-//         <FlatList
-//           ref='listRef'
-//           data={this.state.dana}
-//           keyExtractor={(item, index) => index.toString()}
-//           renderItem={this.renderItemDana}
-//           />
-//       </View>
-//     );
-// renderItemDana = ({item, index}) => {
-//     return(
-//         <View>
-//             <View style={styles.column}>    
-//                 <View style={styles.main}>
-//                     <View style={styles.profil}>
-//                         <Text style={{color: '#fff', fontSize: 14}} >Dana Kampanye</Text>                     
-//                     </View>                                                   
-//                     <Text style={styles.textCenter}>NAMA : {item.nama_kepala_daerah}</Text>
-//                     <Text style={styles.textCenter}>NAMA WAKIL : {item.nama_wakil_kepala_daerah}</Text>
-//                     <Text style={styles.textCenter}>TANGGAL PENYERAHAN : {item.tanggal_penyerahan}</Text>
-//                     <Text style={styles.textCenter}>WAKTU PENYERAHAN : {item.waktu_penyerahan}</Text>
-//                     <Text style={styles.textCenter}>LAPORAN AWAL DANA KAMPANYE : {item.laporan_awal_dana_kampanye}</Text>
-//                 </View>                                     
-//             </View>  
-//         </View>        
-//     )
-// }

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase'; 
 
 class Backend {
   store = null;
@@ -12,14 +12,15 @@ class Backend {
   }
   init() {
     if (!firebase.apps.length) {
-      firebase.initializeApp({
-        apiKey: "AIzaSyD1Hcc7ND_K-f9JPOT8NYJGTmUayS5f2As",
-        authDomain: "database-c2a51.firebaseapp.com",
-        databaseURL: "https://database-c2a51.firebaseio.com",
-        projectId: "database-c2a51",
-        storageBucket: "",
-        messagingSenderId: "173196391365"
-      });
+      var config = {
+        apiKey: "AIzaSyC1yFSnKewLBz9oqX0DD1XcBZ-BH3SKnAA",
+        authDomain: "dateng-e088e.firebaseapp.com",
+        databaseURL: "https://dateng-e088e.firebaseio.com",
+        projectId: "dateng-e088e",
+        storageBucket: "dateng-e088e.appspot.com",
+        messagingSenderId: "106242181369"
+      };
+      firebase.initializeApp(config);
     }
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

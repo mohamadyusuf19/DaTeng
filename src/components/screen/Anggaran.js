@@ -15,7 +15,6 @@ const imageWidth = Dimensions.get('window').width
 export default class Anggaran extends Component {
     constructor(props) {
         super(props);
-
         this.renderItem = this.renderItem.bind(this);
     }
 
@@ -23,8 +22,7 @@ export default class Anggaran extends Component {
 
     render() {
         return (
-            <View style={styles.container}> 
-                             
+            <View style={styles.container}>               
                 <FlatList
                     ref='listRef'
                     data={data.anggaran_pilkada}
