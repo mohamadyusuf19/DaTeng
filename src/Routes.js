@@ -7,12 +7,12 @@ import Pilkada from './components/screen/Pilkada';
 import Profil from './components/screen/Profil';
 import VisiMisi from './components/screen/VisiMisi'
 import Anggaran from './components/screen/Anggaran';
-import Tahapan from '../src/components/screen/tahapan/Tahapan';
 import Voting from './components/screen/Voting';
+import Tahapan from '../src/components/screen/tahapan/Tahapan';
 import Persiapan from '../src/components/screen/tahapan/Persiapan';
 import Penyelenggaraan from '../src/components/screen/tahapan/Penyelenggaraan';
 import Home from './components/screen/Home';
-import LaporanDana from './components/screen/LaporanDana';
+import Info from './components/screen/Info';
 import HomeChat from './components/screen/HomeChat';
 import Channels from './components/screen/Channels';
 import Chat from './components/screen/Chat';
@@ -47,17 +47,13 @@ const Navigasi = StackNavigator({
       navigationOptions: {
         title: "Anggaran",        
       },
-    },
+    },  
     Tahapan: {
       screen: Tahapan,
       navigationOptions: {
-        title: "Tahapan",
-        // headerTintColor: '#fff',  
-        // headerStyle: {
-        //   backgroundColor: '#37474F'
-        // }
-      },
-    },   
+        header: null 
+      }
+    },
     Persiapan: {
       screen: Persiapan,
       navigationOptions: {
@@ -76,14 +72,11 @@ const Navigasi = StackNavigator({
         header: null
       },
     },
-    LaporanDana: {
-      screen: LaporanDana,
+    Info: {
+      screen: Info,
       navigationOptions: {
         header: null
       }
-    },
-    Tahapan: { 
-      screen: Tahapan 
     },
     Voting: { 
       screen: Voting,

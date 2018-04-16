@@ -10,7 +10,6 @@ import {
     ActivityIndicator
 } from 'react-native';
 import Header from '../common/Header'
-import Modal from "react-native-modal";
 const imageWidth = Dimensions.get('window').width
 
 export default class Voting extends Component {    

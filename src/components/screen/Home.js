@@ -11,7 +11,7 @@ export default class Home extends Component {
 
         return (
         <View style={styles.container}>  
-            <Header text='Beranda'/>     
+            <Header text='Pilkada Jateng'/>     
             <View style={{ flex: 1 }}> 
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Paslon')}>

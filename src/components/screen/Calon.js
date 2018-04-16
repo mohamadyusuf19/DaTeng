@@ -11,7 +11,6 @@ import {
     Image
 } from 'react-native';
 import HeaderFunction from '../common/HeaderFunction';
-import Modal from "react-native-modal";
 import _ from 'lodash';
 
 const imageWidth = Dimensions.get('window').width
@@ -41,7 +40,6 @@ export default class Calon extends Component {
     
     showProfile(indexDetail) {
         console.log(indexDetail);
-        //<DetailNewsView detail={indexDetail}/>
         this.props.navigation.navigate('Profil', {detail: indexDetail})
     }
 
@@ -49,10 +47,6 @@ export default class Calon extends Component {
         this.props.navigation.navigate('VisiMisi', {detail: indexDetail})
     }  
     
-    showLaporan(indexDetail) {
-        this.props.navigation.navigate('LaporanDana', {detail: indexDetail})
-    }  
-
     render() {    
         return (
             <View>
@@ -115,12 +109,7 @@ export default class Calon extends Component {
                                 { title: 'Visi', data: item.visimisi.visi}
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showLaporan([
-                                item.nama_kepala_daerah, 
-                            ])}>                           
-                                <Text style={{color: '#fff'}}>Laporan Dana</Text>
-                            </TouchableOpacity>                                  
+                            </TouchableOpacity>                               
                         </View>
                     </View>            
                 </View>         
@@ -213,3 +202,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'    
     },   
 });
+
+
+{/* <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showInfo([
+    item.nama_kepala_daerah, 
+])}>                           
+    <Text style={{color: '#fff'}}>Info</Text>
+</TouchableOpacity>    */}

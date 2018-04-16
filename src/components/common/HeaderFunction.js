@@ -6,8 +6,9 @@ const iconBack = require('../../icon/back.png')
 
 const HeaderFunction = ({ text, onPress }) => (
         <View style={styles.header}>
-            <TouchableOpacity style={{ left: 10, position: 'absolute' }} onPress={onPress}>
+            <TouchableOpacity style={{ left: 10, position: 'absolute', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} onPress={onPress}>
                 <Image source={iconBack} style={{height: 20, width: 20}} />
+                <Text style={{color: "#5188d1", fontSize: 20}}>Kembali</Text>
             </TouchableOpacity>
             <View style={{ alignItems: 'center'}}> 
                 <Text style={styles.textHeader}>{text}</Text>

@@ -4,7 +4,7 @@ import HeaderFunction from '../common/HeaderFunction'
 import _ from 'lodash';
 const imageWidth = Dimensions.get('window').width*0.85
 const imageHeight = Dimensions.get('window').height*0.4
-export default class LaporanDana extends Component {
+export default class Info extends Component {
     state = {
         data: []
     }
@@ -40,7 +40,7 @@ export default class LaporanDana extends Component {
                 <View style={styles.container}>
                     <HeaderFunction 
                     onPress={() => this.props.navigation.goBack()}
-                    text="Laporan Dana Paslon"
+                    text="Info"
                     />
                     {callData()}          
                 </View>      
