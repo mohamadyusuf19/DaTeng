@@ -7,12 +7,11 @@ import {
     ImageBackground,
     Dimensions,
     TouchableOpacity,
-    ActivityIndicator,
     Image
 } from 'react-native';
 import HeaderFunction from '../common/HeaderFunction';
 import _ from 'lodash';
-
+import Data from '../../data/profil_calon_2018.json';
 const imageWidth = Dimensions.get('window').width
 
 export default class Calon extends Component {    
@@ -45,20 +44,19 @@ export default class Calon extends Component {
 
     showVisiMisi(indexDetail) {
         this.props.navigation.navigate('VisiMisi', {detail: indexDetail})
-    }  
+    }
+    
+    showInfo(indexDetail) {
+        this.props.navigation.navigate('Info', {detail: indexDetail})
+    }
     
     render() {    
         return (
             <View>
-            <HeaderFunction text="Paslon" onPress={() => this.props.navigation.goBack()}/> 
-                <ActivityIndicator
-                        color='#009688'
-                        size='large'
-                        style={styles.ActivityIndicatorStyle}
-                        animating={this.state.isLoading}/>    
+            <HeaderFunction text="Paslon" onPress={() => this.props.navigation.goBack()}/>                
                 <FlatList
                     ref='listRef'
-                    data={this.state.data}                                             
+                    data={Data}                                             
                     renderItem={this.renderItem}
                     keyExtractor={(item, index) => index.toString()}/>                                                                                
             </View>                               
@@ -99,8 +97,14 @@ export default class Calon extends Component {
                                 item.tempat_lahir_wakil,
                                 item.tanggal_lahir_wakil,
                                 item.pekerjaan_wakil_kepala_daerah,
+                                item.fb_nama_kepala_daerah,
+                                item.twitter_nama_kepala_daerah,
+                                item.ig_nama_kepala_daerah,
+                                item.fb_nama_wakil_kepala_daerah,
+                                item.twitter_nama_wakil_kepala_daerah,
+                                item.ig_nama_wakil_kepala_daerah,
                             ])}>
-                                <Text style={{color: '#fff'}}>Profile</Text>
+                                <Text style={{color: '#fff'}}>Profil</Text>
                             </TouchableOpacity> 
                             <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showVisiMisi([
                                 { title: 'Misi', data: item.visimisi.misi},
@@ -109,7 +113,12 @@ export default class Calon extends Component {
                                 { title: 'Visi', data: item.visimisi.visi}
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
-                            </TouchableOpacity>                               
+                            </TouchableOpacity> 
+                            <TouchableOpacity style={styles.contactProfile} onPress={() => this.showInfo([
+                                item.nama_kepala_daerah
+                            ])}>
+                                <Text style={{color: '#fff'}}>Info</Text>
+                            </TouchableOpacity>                              
                         </View>
                     </View>            
                 </View>         
@@ -164,7 +173,7 @@ const styles = StyleSheet.create({
     },
     contactProfile: {
         height: 27,
-        width: 110,      
+        width: 90,      
         borderRadius: 5,
         backgroundColor: '#e66225',
         margin: 5,
@@ -179,33 +188,5 @@ const styles = StyleSheet.create({
         margin: 5,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    modalContent: {
-        backgroundColor: "white",      
-        height: 500,        
-        borderRadius: 4,
-        borderColor: "rgba(0, 0, 0, 0.1)",
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    bottomModal: {
-        justifyContent: "flex-end",
-        margin: 0
-    },    
-    ActivityIndicatorStyle:{
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center'    
-    },   
+    }
 });
-
-
-{/* <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showInfo([
-    item.nama_kepala_daerah, 
-])}>                           
-    <Text style={{color: '#fff'}}>Info</Text>
-</TouchableOpacity>    */}

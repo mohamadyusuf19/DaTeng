@@ -29,7 +29,7 @@ export default {
   },
   chatContainer: {
     ...screen,
-    backgroundColor: '#eae7e3',
+    backgroundColor: '#78c6e2',
   },
   navigationBar: {
     navigationBarStyle: {
@@ -37,7 +37,7 @@ export default {
       borderBottomWidth: 0,
     },
     titleStyle: {
-      color: '#000',
+      color: '#fff',
       fontSize: 17,
       fontWeight: '600',
       fontFamily: 'Lato-Semibold',
@@ -46,7 +46,6 @@ export default {
   },
   textInput: {
     style: {
-      height: 44,
       color: '#000',
       fontSize: 22,
       marginLeft: Platform.select({
@@ -66,20 +65,15 @@ export default {
     marginLeft: 15,
     fontFamily: 'Lato-Semibold',
   },
-
-
-
-
-
   GiftedChat: {
     renderBubble(props) {
       return (
         <View>
           {!props.isSameUser(props.currentMessage, props.previousMessage) ?
             <Text style={{
-              color: '#b2b2b2',
+              color: '#aaa4a4',
               marginBottom: 3,
-              fontSize: 12,
+              fontSize: 16,
               textAlign: props.currentMessage.user._id === props.user._id ? 'right' : 'left',
               marginLeft: props.currentMessage.user._id === props.user._id ? 0 : 10,
               marginRight: props.currentMessage.user._id === props.user._id ? 10 : 0,
@@ -93,6 +87,9 @@ export default {
               right: {
                 backgroundColor: '#2974f4',
               },
+              left:{
+                backgroundColor: "#7886e2",
+              }
             }}
           />
         </View>

@@ -28,7 +28,7 @@ class Chat extends React.Component {
   render() {
 
     return (
-      <View style={LayoutChat.chatContainer}>
+      <View style={{ flex: 1}}>
         <HeaderFunction text={this.props.navigation.state.params.channel} onPress={() => this.props.navigation.goBack() }/>
         <GiftedChat
           messages={this.state.messages}

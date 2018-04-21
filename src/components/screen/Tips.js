@@ -1,125 +1,126 @@
-import React, { Component } from 'react'
-import { Animated, View, StyleSheet, Image, Dimensions, ScrollView } from 'react-native'
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
+import HeaderFunction from '../common/HeaderFunction'
+import Data from '../../data/tips.json'
+import Carousel from "react-native-snap-carousel";
+import _ from 'lodash'
+const imageWidth = Dimensions.get('window').width*0.70
 
-const deviceWidth = Dimensions.get('window').width
-const FIXED_BAR_WIDTH = 280
-const BAR_SPACE = 10
+export default class Tips extends Component {
+  // state = {
+  //   data: []
+  // };
 
-const images = [
-  'https://s-media-cache-ak0.pinimg.com/originals/ee/51/39/ee5139157407967591081ee04723259a.png',
-  'https://s-media-cache-ak0.pinimg.com/originals/40/4f/83/404f83e93175630e77bc29b3fe727cbe.jpg',
-  'https://s-media-cache-ak0.pinimg.com/originals/8d/1a/da/8d1adab145a2d606c85e339873b9bb0e.jpg',
-  'https://i.pinimg.com/564x/91/1b/72/911b72e43c9f1161885f6dff7713ee4a.jpg',
-  'https://i.pinimg.com/564x/05/03/16/050316f2535ade0231f0371a11d7d233.jpg'
-]
+  // componentWillMount() {
+  //   fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/profilpaslon')
+  //     .then((response) => response.json())
+  //     .then((data) => this.setState({ data }))
+  //     .catch((error) => console.log('error'))
+  // }
+  
 
-export default class App extends Component {
-
-  numItems = images.length
-  itemWidth = (FIXED_BAR_WIDTH / this.numItems) - ((this.numItems - 1) * BAR_SPACE)
-  animVal = new Animated.Value(0)
-
-  render() {
-    let imageArray = []
-    let barArray = []
-    images.forEach((image, i) => {
-      console.log(image, i)
-      const thisImage = (
-        <Image
-          key={`image${i}`}
-          source={{uri: image}}
-          style={{ width: deviceWidth }}
-        />
-      )
-      imageArray.push(thisImage)
-
-      const scrollBarVal = this.animVal.interpolate({
-        inputRange: [deviceWidth * (i - 1), deviceWidth * (i + 1)],
-        outputRange: [-this.itemWidth, this.itemWidth],
-        extrapolate: 'clamp',
-      })
-
-      const thisBar = (
-        <View
-          key={`bar${i}`}
-          style={[
-            styles.track,
-            {
-              width: this.itemWidth,
-              marginLeft: i === 0 ? 0 : BAR_SPACE,
-            },
-          ]}
-        >
-          <Animated.View
-
-            style={[
-              styles.bar,
-              {
-                width: this.itemWidth,
-                transform: [
-                  { translateX: scrollBarVal },
-                ],
-              },
-            ]}
+  render() {    
+    // console.log(this.state.data.visimisi)   
+    const data = _.get(this.props.navigation.state, 'params.detail');
+    console.log('data0', data);
+    // const  
+    return(
+      <View style={styles.container}>
+          <HeaderFunction 
+            onPress={() => this.props.navigation.goBack()}
+            text="Tips Memilih"
           />
-        </View>
-      )
-      barArray.push(thisBar)
-    })
-
-    return (
-      <View
-        style={styles.container}
-        flex={1}
-      >
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={10}
-          pagingEnabled
-          onScroll={
-            Animated.event(
-              [{ nativeEvent: { contentOffset: { x: this.animVal } } }]
-            )
-          }
-        >
-
-          {imageArray}
-
-        </ScrollView>
-        <View
-          style={styles.barContainer}
-        >
-          {barArray}
-        </View>
-      </View>
+          <Carousel
+            data={data}
+            renderItem={this.renderItem.bind(this)}
+            itemWidth={Dimensions.get("window").width * 0.85}
+            sliderWidth={Dimensions.get("window").width}
+            containerCustomStyle={styles.carousel}
+            slideStyle={{ flex: 1 }}
+            keyExtractor={(item, index) => index.toString()}
+          />                 
+      </View>      
     )
+  }
+
+  renderItem = ({item, index}) => {
+    return (            
+      <View style={styles.column}>    
+        <View style={styles.main}>
+          <View style={styles.profil}>
+            <Text style={{color: '#fff', fontSize: 20}} >{item.title}</Text>                     
+          </View>
+          <ScrollView>
+          <View>
+            <Text style={{color: '#fff', fontSize: 20}} >{item.isi}</Text>                     
+          </View>       
+          </ScrollView>          
+          <View style={{bottom: 0, justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginBottom: 5, marginTop: 5}}>
+            <Text style={{fontSize: 15, color: '#fff'}}>{index + 1}/4</Text>
+          </View>
+        </View>                                    
+      </View>
+    );
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
+      flex: 1,
+      alignItems: 'center',                 
+  },
+  column: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+  main: {   
+      flex: 1,
+      elevation: 3,
+      height: 520, 
+      width: 295,         
+      borderRadius: 10,      
+      backgroundColor: '#383838',   
+      margin: 5, 
+      paddingLeft: 15,
+      paddingRight: 15,
+      paddingTop: 15,  
+      marginTop: 20,       
+  },
+  images: {        
+      height: 180, 
+      width: 180,
+      borderRadius: 90,
+      backgroundColor: '#000',
+      justifyContent: 'center',
+      alignItems: 'center',
+  },    
+  centerButton: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',         
+      padding: 5,
+  },
+  textCenter: {
+      fontSize: 16,
+      color: '#fff'
+  }, 
+  textCenterProfil: {
+    fontSize: 13,
+    color: '#fff'
+},  
+  profil: {
+    height: 26,
+    width: 120,
+    borderRadius: 5,   
+    backgroundColor: '#c02d28',
     justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+    marginLeft: 75,
   },
-  barContainer: {
-    position: 'absolute',
-    zIndex: 2,
-    top: 40,
-    flexDirection: 'row',
-  },
-  track: {
-    backgroundColor: '#ccc',
-    overflow: 'hidden',
-    height: 2,
-  },
-  bar: {
-    backgroundColor: '#5294d6',
-    height: 2,
-    position: 'absolute',
-    left: 0,
-    top: 0,
-  },
-})
+  space: {
+    marginBottom: 8,
+  }
+});

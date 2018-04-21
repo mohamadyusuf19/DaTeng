@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {  View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
-import Header from '../common/Header';
+import HeaderHome from '../common/HeaderHome';
 import StyleRes from './StyleRes';
-
+const DaTeng = require('../../icon/DaTeng.png')
 export default class Home extends Component {
 
     state = { navigate: this.props.navigation.navigate }
@@ -11,7 +11,9 @@ export default class Home extends Component {
 
         return (
         <View style={styles.container}>  
-            <Header text='Pilkada Jateng'/>     
+            <HeaderHome
+             source={DaTeng}
+            />     
             <View style={{ flex: 1 }}> 
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Paslon')}>
@@ -34,7 +36,7 @@ export default class Home extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.card} >
+                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('BeritaPilkada')} >
                         <Image source={require('../../icon/newspaper.png')} style={styles.icon} />
                         <Text style={styles.text}>Berita</Text>
                     </TouchableOpacity>
@@ -66,6 +68,8 @@ const styles = StyleSheet.create({
         borderColor: '#f1f1f1',
         justifyContent: 'center',
         alignItems: 'center',
+        margin: 3,
+        elevation: 3
     },
     text: {
         color: '#000'

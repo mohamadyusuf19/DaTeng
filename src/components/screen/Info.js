@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, Dimensions, FlatList} from 'react-native';
+import {  View, Text, StyleSheet, Dimensions, FlatList, Image} from 'react-native';
 import HeaderFunction from '../common/HeaderFunction'
 import _ from 'lodash';
+import Data from '../../data/dana_paslon_2018.json'
 const imageWidth = Dimensions.get('window').width*0.85
 const imageHeight = Dimensions.get('window').height*0.4
+
 export default class Info extends Component {
     state = {
         data: []
@@ -25,28 +27,31 @@ export default class Info extends Component {
         render() {   
         const dataCalon = _.get(this.props.navigation.state, 'params.detail');
         const dataState = this.state.data;
-        const dataFilter = this.state.data.filter(item => item.nama_kepala_daerah == dataCalon);
-        console.log(dataFilter);
-        const callData = () => {
-            return (
-                <FlatList
-                    data={dataFilter}                                             
-                    renderItem={this.renderItem}
-                    keyExtractor={(item, index) => index.toString()}/>
-            )
-        }
-            
+        const dataFilter = Data.filter(item => item.nama_kepala_daerah == dataCalon);
+        // console.log(dataWakilDaerah);
+        // const callData = () => {                     
+        //     return (
+        //         <FlatList
+        //         data={dataWakilDaerah}                                             
+        //         renderItem={this.renderItem}
+        //         keyExtractor={(item, index) => index.toString()}/>
+        //     );
+        // }               
         return(
                 <View style={styles.container}>
                     <HeaderFunction 
                     onPress={() => this.props.navigation.goBack()}
                     text="Info"
                     />
-                    {callData()}          
+                    <FlatList
+                        data={dataFilter}                                             
+                        renderItem={this.renderItem}
+                        keyExtractor={(item, index) => index.toString()}/>                            
                 </View>      
             )
         }
         renderItem = ({item, index}) => {
+
             return(
                 <View>
                     <View style={styles.column}>    
@@ -59,7 +64,7 @@ export default class Info extends Component {
                             <Text style={styles.textCenter}>TANGGAL PENYERAHAN : {item.tanggal_penyerahan}</Text>
                             <Text style={styles.textCenter}>WAKTU PENYERAHAN : {item.waktu_penyerahan}</Text>
                             <Text style={styles.textCenter}>LAPORAN AWAL DANA KAMPANYE : {item.laporan_awal_dana_kampanye}</Text>
-                        </View>                                     
+                        </View>                        
                     </View>  
                 </View>        
             )
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 10,
-  }
+  },  
 });
 
 

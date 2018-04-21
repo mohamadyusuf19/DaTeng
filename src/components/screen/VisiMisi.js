@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
 import HeaderFunction from '../common/HeaderFunction'
 import Carousel from "react-native-snap-carousel";
 import _ from 'lodash'
@@ -60,10 +60,12 @@ export default class VisiMisi extends Component {
       <View style={styles.column}>    
         <View style={styles.main}>
           <View style={styles.profil}>
-            <Text style={{color: '#fff', fontSize: 25}} >{item.title}</Text>                     
+            <Text style={{color: '#fff', fontSize: 20}} >{item.title}</Text>                     
           </View>
-          {allData(item.data)}            
-          <View style={{bottom: 0, position: 'absolute', justifyContent: 'center', marginLeft: 130, alignItems: 'center', marginBottom: 5}}>
+          <ScrollView>
+            {allData(item.data)}            
+          </ScrollView>          
+          <View style={{bottom: 0, justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginBottom: 5, marginTop: 5}}>
             <Text style={{fontSize: 15, color: '#fff'}}>{index + 1}/4</Text>
           </View>
         </View>                                    
@@ -78,11 +80,13 @@ const styles = StyleSheet.create({
       alignItems: 'center',                 
   },
   column: {
+      flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
   },
   main: {   
+      flex: 1,
       elevation: 3,
       height: 520, 
       width: 295,         

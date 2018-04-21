@@ -16,6 +16,9 @@ import Info from './components/screen/Info';
 import HomeChat from './components/screen/HomeChat';
 import Channels from './components/screen/Channels';
 import Chat from './components/screen/Chat';
+import WebViewDetail from './components/screen/WebViewDetail';
+import BeritaPilkada from './components/screen/BeritaPilkada';
+import BeritaDetail from './components/screen/BeritaDetail';
 
 const Navigasi = StackNavigator({
     Home: {
@@ -107,7 +110,25 @@ const Navigasi = StackNavigator({
       navigationOptions :{
         header: null
       }
-    }    
+    },
+    BeritaPilkada : {
+      screen : BeritaPilkada,
+      navigationOptions :{
+        header: null
+      }
+    },
+    BeritaDetail : {
+      screen : BeritaDetail,
+      navigationOptions :{
+        header: null
+      }
+    },
+    WebViewDetail: {
+      screen: WebViewDetail,
+      navigationOptions: {
+        header: null
+      }
+    },    
 });
 
 export default Navigasi
