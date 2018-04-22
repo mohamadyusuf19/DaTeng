@@ -12,7 +12,6 @@
     "lodash": "^4.17.5",
     "react": "16.3.1",
     "react-native": "0.55.2",
-    "react-native-android-text-to-speech": "^1.2.3",
     "react-native-autogrow-input": "^0.2.1",
     "react-native-gifted-chat": "^0.4.3",
     "react-native-invertible-scroll-view": "^1.1.1",
@@ -23,6 +22,7 @@
     "react-native-svg-charts": "^5.0.0",
     "react-native-swiper": "^1.5.13",
     "react-native-timeline-listview": "^0.2.3",
+    "react-native-tts": "^1.5.0",
     "react-navigation": "^1.5.11"
   },
   "devDependencies": {

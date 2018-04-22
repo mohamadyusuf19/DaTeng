@@ -20,7 +20,7 @@ class Persiapan extends React.Component{
   render(){
     return(
       <View style={{ flex: 1 }}>
-        <HeaderFuntion onPress={() => this.props.navigation.goBack() }/>
+        <HeaderFuntion text="Tahapan" onPress={() => this.props.navigation.goBack() }/>
         <Timeline
           data={this.data}
           showTime={false}

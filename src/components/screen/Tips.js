@@ -20,18 +20,14 @@ export default class Tips extends Component {
   
 
   render() {    
-    // console.log(this.state.data.visimisi)   
-    const data = _.get(this.props.navigation.state, 'params.detail');
-    console.log('data0', data);
-    // const  
     return(
       <View style={styles.container}>
           <HeaderFunction 
             onPress={() => this.props.navigation.goBack()}
-            text="Tips Memilih"
+            text="Wacana singkat"
           />
           <Carousel
-            data={data}
+            data={Data}
             renderItem={this.renderItem.bind(this)}
             itemWidth={Dimensions.get("window").width * 0.85}
             sliderWidth={Dimensions.get("window").width}
@@ -47,8 +43,8 @@ export default class Tips extends Component {
     return (            
       <View style={styles.column}>    
         <View style={styles.main}>
-          <View style={styles.profil}>
-            <Text style={{color: '#fff', fontSize: 20}} >{item.title}</Text>                     
+          <View style={styles.judul}>
+            <Text style={{color: '#fff', fontSize: 13}} >{item.title}</Text>                     
           </View>
           <ScrollView>
           <View>
@@ -56,7 +52,7 @@ export default class Tips extends Component {
           </View>       
           </ScrollView>          
           <View style={{bottom: 0, justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginBottom: 5, marginTop: 5}}>
-            <Text style={{fontSize: 15, color: '#fff'}}>{index + 1}/4</Text>
+            <Text style={{fontSize: 15, color: '#fff'}}>{index + 1}/8</Text>
           </View>
         </View>                                    
       </View>
@@ -87,38 +83,15 @@ const styles = StyleSheet.create({
       paddingRight: 15,
       paddingTop: 15,  
       marginTop: 20,       
-  },
-  images: {        
-      height: 180, 
-      width: 180,
-      borderRadius: 90,
-      backgroundColor: '#000',
-      justifyContent: 'center',
-      alignItems: 'center',
-  },    
-  centerButton: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',         
-      padding: 5,
-  },
-  textCenter: {
-      fontSize: 16,
-      color: '#fff'
-  }, 
-  textCenterProfil: {
-    fontSize: 13,
-    color: '#fff'
-},  
-  profil: {
-    height: 26,
-    width: 120,
+  },  
+  judul: {
+    width: 250,
+    margin: 15,
+    height: 20,
     borderRadius: 5,   
     backgroundColor: '#c02d28',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15,
-    marginLeft: 75,
   },
   space: {
     marginBottom: 8,

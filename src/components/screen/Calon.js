@@ -7,8 +7,10 @@ import {
     ImageBackground,
     Dimensions,
     TouchableOpacity,
-    Image
+    Image,
+    TouchableHighlight
 } from 'react-native';
+import Tts from 'react-native-tts';
 import HeaderFunction from '../common/HeaderFunction';
 import _ from 'lodash';
 import Data from '../../data/profil_calon_2018.json';
@@ -50,6 +52,12 @@ export default class Calon extends Component {
         this.props.navigation.navigate('Info', {detail: indexDetail})
     }
     
+    speech(text) {
+        Tts.speak(text)
+        Tts.setDefaultLanguage("id-ID")
+        Tts.setDefaultRate(0.6);
+    }
+
     render() {    
         return (
             <View>
@@ -81,12 +89,16 @@ export default class Calon extends Component {
                         </View>                                        
                         <View style={{position: 'absolute', alignItems: 'center', justifyContent: 'center'}}>
                             <Text style={{fontSize: 20, color: '#fff', marginBottom: 30, marginTop: 15}}>Pasangan Nomor Urut {index + 1}</Text>
-                            <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>
+                            <TouchableHighlight onPress={() => this.speech(item.nama_kepala_daerah)}>
+                                <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>
+                            </TouchableHighlight>
                             <Text style={styles.textCenter}>&</Text>
-                            <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>
+                            <TouchableHighlight onPress={() => this.speech(item.nama_wakil_kepala_daerah)}>
+                                <Text style={styles.textCenter}>{item.nama_wakil_kepala_daerah}</Text>
+                            </TouchableHighlight>
                         </View>
                         <View style={styles.centerButton}>
-                            <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showProfile([
+                            <TouchableOpacity onLongPress={() => this.speech("Profil")} style={styles.contactProfile} onPress={()=>this.showProfile([
                                 item.nama_kepala_daerah,
                                 item.gender_kepala_daerah,
                                 item.tempat_lahir_kepala_daerah,                            
@@ -106,7 +118,7 @@ export default class Calon extends Component {
                             ])}>
                                 <Text style={{color: '#fff'}}>Profil</Text>
                             </TouchableOpacity> 
-                            <TouchableOpacity style={styles.contactProfile} onPress={()=>this.showVisiMisi([
+                            <TouchableOpacity onLongPress={() => this.speech("Visi Misi")} style={styles.contactProfile} onPress={()=>this.showVisiMisi([
                                 { title: 'Misi', data: item.visimisi.misi},
                                 { title: 'Program', data: item.visimisi.program},
                                 { title: 'Detail', data: item.visimisi.detail},
@@ -114,7 +126,7 @@ export default class Calon extends Component {
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
                             </TouchableOpacity> 
-                            <TouchableOpacity style={styles.contactProfile} onPress={() => this.showInfo([
+                            <TouchableOpacity onLongPress={() => this.speech("Info")} style={styles.contactProfile} onPress={() => this.showInfo([
                                 item.nama_kepala_daerah
                             ])}>
                                 <Text style={{color: '#fff'}}>Info</Text>

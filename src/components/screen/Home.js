@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import {  View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
 import HeaderHome from '../common/HeaderHome';
 import StyleRes from './StyleRes';
+import Tts from 'react-native-tts';
 const DaTeng = require('../../icon/DaTeng.png')
 export default class Home extends Component {
 
     state = { navigate: this.props.navigation.navigate }
+
+    speech(text) {
+        Tts.speak(text)
+        Tts.setDefaultLanguage("id-ID")
+        Tts.setDefaultRate(0.6);
+    }
 
     render() {
 
@@ -16,33 +23,33 @@ export default class Home extends Component {
             />     
             <View style={{ flex: 1 }}> 
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Paslon')}>
+                    <TouchableOpacity onLongPress={() => this.speech("Paslon")} style={styles.card} onPress={() => this.state.navigate('Paslon')}>
                         <Image source={require('../../icon/avatar.png')} style={styles.icon} />
                         <Text style={styles.text}>Paslon</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Tahapan')}>
+                    <TouchableOpacity onLongPress={() => this.speech("Tahapan")} style={styles.card} onPress={() => this.state.navigate('Tahapan')}>
                         <Image source={require('../../icon/calendar.png')} style={styles.icon} />
                         <Text style={styles.text}>Tahapan</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Diskusi')}>
+                    <TouchableOpacity onLongPress={() => this.speech("diskusi")} style={styles.card} onPress={() => this.state.navigate('Diskusi')}>
                         <Image source={require('../../icon/speech-bubble.png')} style={styles.icon} />
                         <Text style={styles.text}>Diskusi</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Wacana')}>
+                    <TouchableOpacity onLongPress={() => this.speech("wacana singkat")} style={styles.card} onPress={() => this.state.navigate('Wacana')}>
                         <Image source={require('../../icon/lightbulb.png')} style={styles.icon} />
-                        <Text style={styles.text}>Tips</Text>
+                        <Text style={styles.text}>Wacana singkat</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('BeritaPilkada')} >
+                    <TouchableOpacity onLongPress={() => this.speech("berita")} style={styles.card} onPress={() => this.state.navigate('BeritaPilkada')} >
                         <Image source={require('../../icon/newspaper.png')} style={styles.icon} />
                         <Text style={styles.text}>Berita</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.card} onPress={() => this.state.navigate('Voting')}>
+                    <TouchableOpacity onLongPress={() => this.speech("Quick Count")} style={styles.card} onPress={() => this.state.navigate('Voting')} >
                         <Image source={require('../../icon/graphic.png')} style={styles.icon} />
-                        <Text style={styles.text}>Quick Count</Text>
+                        <Text style={styles.text}>Quick count</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
         borderColor: '#f1f1f1',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 3,
+        margin: 8,
         elevation: 3
     },
     text: {
