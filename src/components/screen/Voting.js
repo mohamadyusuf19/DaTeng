@@ -8,7 +8,7 @@ import _ from 'lodash';
 const greenBlue = "rgb(26, 182, 151)";
 const petrel = "rgb(59, 145, 153)";
 
-var end = new Date('06/26/2018 12:00 AM');
+var end = new Date('06/27/2018 07:00 AM');
 var _detik = 1000;
 var _menit = _detik * 60;
 var _jam = _menit * 60;
@@ -18,30 +18,30 @@ export default class Voting extends Component {
         super();
     
         this.state = {
-          data: {},
-          hari: null,
-          jam: null,
-          menit: null,
-          detik: null,
+            data: {},
+            hari: null,
+            jam: null,
+            menit: null,
+            detik: null,
         }
     
-      }
+    }
     
-      handleSelect(event) {
+    handleSelect(event) {
         let entry = event.nativeEvent;
         if (entry == null) {
-          this.setState({ ...this.state, selectedEntry: null });
+            this.setState({ ...this.state, selectedEntry: null });
         } else {
-          this.setState({ ...this.state, selectedEntry: JSON.stringify(entry) });
+            this.setState({ ...this.state, selectedEntry: JSON.stringify(entry) });
         }
     
         console.log(event.nativeEvent);
-      }
+    }
 
-      componentDidMount() {
+    componentDidMount() {
         const size = 80;
         this.timer = setInterval(() => this.showRemaining(), 1000);
-      }
+    }
 
     showRemaining() {
         var now = new Date();

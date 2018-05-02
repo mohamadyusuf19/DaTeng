@@ -7,18 +7,6 @@ import _ from 'lodash'
 const imageWidth = Dimensions.get('window').width*0.70
 
 export default class Tips extends Component {
-  // state = {
-  //   data: []
-  // };
-
-  // componentWillMount() {
-  //   fetch('http://api.pemiluapi.org/pilgubjateng/api/v1/profilpaslon')
-  //     .then((response) => response.json())
-  //     .then((data) => this.setState({ data }))
-  //     .catch((error) => console.log('error'))
-  // }
-  
-
   render() {    
     return(
       <View style={styles.container}>
@@ -44,14 +32,14 @@ export default class Tips extends Component {
       <View style={styles.column}>    
         <View style={styles.main}>
           <View style={styles.judul}>
-            <Text style={{color: '#fff', fontSize: 13}} >{item.title}</Text>                     
+            <Text style={{color: '#fff', fontSize: 18, alignSelf: 'center'}} >{item.title}</Text>                     
           </View>
           <ScrollView>
           <View>
             <Text style={{color: '#fff', fontSize: 20}} >{item.isi}</Text>                     
           </View>       
           </ScrollView>          
-          <View style={{bottom: 0, justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginBottom: 5, marginTop: 5}}>
+          <View style={{bottom: 0, justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginBottom: 5, marginTop: 11}}>
             <Text style={{fontSize: 15, color: '#fff'}}>{index + 1}/8</Text>
           </View>
         </View>                                    
@@ -82,12 +70,14 @@ const styles = StyleSheet.create({
       paddingLeft: 15,
       paddingRight: 15,
       paddingTop: 15,  
-      marginTop: 20,       
+      marginTop: 20,    
+      marginBottom: 20,       
   },  
   judul: {
     width: 250,
-    margin: 15,
-    height: 20,
+    margin: 10,
+    alignSelf: 'center',
+    height: 40,
     borderRadius: 5,   
     backgroundColor: '#c02d28',
     justifyContent: 'center',

@@ -9,6 +9,8 @@ import VisiMisi from './components/screen/VisiMisi'
 import Anggaran from './components/screen/Anggaran';
 import Voting from './components/screen/Voting';
 import Tahapan from '../src/components/screen/tahapan/Tahapan';
+import HomeScreen from '../src/components/screen/Permainan';
+import GameScreen from '../src/components/screen/GameScreen';
 import Persiapan from '../src/components/screen/tahapan/Persiapan';
 import Penyelenggaraan from '../src/components/screen/tahapan/Penyelenggaraan';
 import Home from './components/screen/Home';
@@ -51,12 +53,6 @@ const Navigasi = StackNavigator({
         title: "Anggaran",        
       },
     },  
-    Tahapan: {
-      screen: Tahapan,
-      navigationOptions: {
-        header: null 
-      }
-    },
     Persiapan: {
       screen: Persiapan,
       navigationOptions: {
@@ -129,6 +125,18 @@ const Navigasi = StackNavigator({
         header: null
       }
     },    
+    HomeScreen: {
+      screen: HomeScreen,
+      navigationOptions: {
+        header: null
+      }
+    }, 
+    GameScreen: {
+      screen: GameScreen,
+      navigationOptions: {
+        header: null
+      }
+    }, 
 });
 
 export default Navigasi

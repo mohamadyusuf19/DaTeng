@@ -19,17 +19,17 @@ export default class Home extends Component {
         return (
         <View style={styles.container}>  
             <HeaderHome
-             source={DaTeng}
+                source={DaTeng}
             />     
             <View style={{ flex: 1 }}> 
                 <View style={styles.row}>
-                    <TouchableOpacity onLongPress={() => this.speech("Paslon")} style={styles.card} onPress={() => this.state.navigate('Paslon')}>
-                        <Image source={require('../../icon/avatar.png')} style={styles.icon} />
-                        <Text style={styles.text}>Paslon</Text>
+                    <TouchableOpacity onLongPress={() => this.speech("Info")} style={styles.card} onPress={() => this.state.navigate('Paslon')}>
+                        <Image source={require('../../icon/globe.png')} style={styles.icon} />
+                        <Text style={styles.text}>Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onLongPress={() => this.speech("Tahapan")} style={styles.card} onPress={() => this.state.navigate('Tahapan')}>
-                        <Image source={require('../../icon/calendar.png')} style={styles.icon} />
-                        <Text style={styles.text}>Tahapan</Text>
+                    <TouchableOpacity onLongPress={() => this.speech("Quick Count")} style={styles.card} onPress={() => this.state.navigate('Voting')} >
+                        <Image source={require('../../icon/graphic.png')} style={styles.icon} />
+                        <Text style={styles.text}>Quick count</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
@@ -47,15 +47,15 @@ export default class Home extends Component {
                         <Image source={require('../../icon/newspaper.png')} style={styles.icon} />
                         <Text style={styles.text}>Berita</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onLongPress={() => this.speech("Quick Count")} style={styles.card} onPress={() => this.state.navigate('Voting')} >
-                        <Image source={require('../../icon/graphic.png')} style={styles.icon} />
-                        <Text style={styles.text}>Quick count</Text>
+                    <TouchableOpacity onLongPress={() => this.speech("Permainan")} style={styles.card} onPress={() => this.state.navigate('HomeScreen')}>
+                        <Image source={require('../../icon/console.png')} style={styles.icon} />
+                        <Text style={styles.text}>Permainan</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </View>
         );
-  }
+    }
 }
 
 const styles = StyleSheet.create({

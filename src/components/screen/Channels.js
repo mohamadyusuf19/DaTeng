@@ -23,16 +23,16 @@ export default class Channels extends React.Component {
       }}
 
       >
-      <View style={{borderRadius: 4, 
-            borderWidth: 1, 
-            borderColor: "black", 
+      <View style={{
+            borderRadius: 20,              
+            backgroundColor: "#2da2e5", 
             height: 40, margin: 18, 
             justifyContent: 'center',
             elevation: 1,
             shadowOpacity: 0.1,
             shadowRadius: 2,
             shadowOffset:{width: 0, height: 0}}}>
-        <Text style={LayoutChat.channelName}>
+        <Text style={[LayoutChat.channelName, {alignSelf: 'center'}]}>
           {channelName}
         </Text>
       </View>
@@ -43,13 +43,14 @@ export default class Channels extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <HeaderFunction text='Channels' onPress={() => this.props.navigation.goBack() }/>
+        <HeaderFunction text='Channels' onPress={() => this.state.navigate("Home") }/>
         <ScrollView style={LayoutChat.channelsContainer}>
-        {this.renderRow('diskusi sosial')}
-        {this.renderRow('diskusi politik')}
-        {this.renderRow('diskusi pemilihan')}
-        {this.renderRow('diskusi santai')}
-        {this.renderRow('diskusi partai')}
+        {this.renderRow('Diskusi Sosial')}
+        {this.renderRow('Diskusi Politik')}
+        {this.renderRow('Diskusi Pemilihan')}
+        {this.renderRow('Diskusi Partai')}
+        {this.renderRow('Diskusi Santai')}
+        {this.renderRow('Diskusi Permainan')}
       </ScrollView>
       </View>
     );

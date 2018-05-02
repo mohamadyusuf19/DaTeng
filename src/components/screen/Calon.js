@@ -32,8 +32,8 @@ export default class Calon extends Component {
         .then((response) => response.json())
         .then((data) => this.setState({ 
             data,
-            isLoading: false,
-            loadingHeight: 0,
+                isLoading: false,
+                loadingHeight: 0,
         }))
         .catch((error) => console.log('error'))
     }   
@@ -84,11 +84,11 @@ export default class Calon extends Component {
             <View style={styles.container}>
                 <View style={styles.main}>
                     <View style={styles.column}>
-                        <View style={{opacity: 0.2}}>
+                        <View style={{opacity: 0.3}}>
                         {ImageIcon()}
                         </View>                                        
                         <View style={{position: 'absolute', alignItems: 'center', justifyContent: 'center'}}>
-                            <Text style={{fontSize: 20, color: '#fff', marginBottom: 30, marginTop: 15}}>Pasangan Nomor Urut {index + 1}</Text>
+                            <Text style={{fontSize: 22, color: '#fff', marginBottom: 80, marginTop: 15}}>Pasangan Nomor Urut {index + 1}</Text>
                             <TouchableHighlight onPress={() => this.speech(item.nama_kepala_daerah)}>
                                 <Text style={styles.textCenter}>{item.nama_kepala_daerah}</Text>
                             </TouchableHighlight>
@@ -119,10 +119,10 @@ export default class Calon extends Component {
                                 <Text style={{color: '#fff'}}>Profil</Text>
                             </TouchableOpacity> 
                             <TouchableOpacity onLongPress={() => this.speech("Visi Misi")} style={styles.contactProfile} onPress={()=>this.showVisiMisi([
+                                { title: 'Visi', data: item.visimisi.visi},
                                 { title: 'Misi', data: item.visimisi.misi},
                                 { title: 'Program', data: item.visimisi.program},
-                                { title: 'Detail', data: item.visimisi.detail},
-                                { title: 'Visi', data: item.visimisi.visi}
+                                { title: 'Detail', data: item.visimisi.detail}                                
                             ])}>
                                 <Text style={{color: '#fff'}}>Visi Misi</Text>
                             </TouchableOpacity> 

@@ -9,7 +9,7 @@ import {
 
 import { Bubble, Send } from 'react-native-gifted-chat';
 
-const mainColor = '#eae7e3';
+const mainColor = '#fff';
 const darkColor = '#1d59c1';
 
 const screen = {
@@ -47,7 +47,8 @@ export default {
   textInput: {
     style: {
       color: '#000',
-      fontSize: 22,
+      flex:1,
+      fontSize: 16,
       marginLeft: Platform.select({
         ios: 15,
         android: 10,
@@ -55,14 +56,13 @@ export default {
       marginRight: 15,
       fontFamily: 'Lato-Semibold',
     },
-    placeholderTextColor: '#A89ED1',
+    placeholderTextColor: '#ccd3e0',
     clearButtonMode: 'while-editing',
     underlineColorAndroid: 'transparent',
   },
   channelName: {
     color: '#000',
-    fontSize: 18,
-    marginLeft: 15,
+    fontSize: 20,
     fontFamily: 'Lato-Semibold',
   },
   GiftedChat: {

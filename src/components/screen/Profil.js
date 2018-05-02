@@ -14,7 +14,7 @@ export default class Profil extends Component {
     }
 
     render() {
-      return(
+        return(
         <View style={styles.container}>
             <HeaderFunction 
                 onPress={() => this.props.navigation.goBack()}
@@ -30,7 +30,7 @@ export default class Profil extends Component {
                         <Text style={styles.textCenter}>TEMPAT LAHIR : {this.props.navigation.state.params.detail[2]}</Text>                                         
                         <Text style={styles.textCenter}>TANGGAL LAHIR : {this.props.navigation.state.params.detail[3]}</Text>                                           
                         <Text style={styles.textCenter}>PEKERJAAN : {this.props.navigation.state.params.detail[4]}</Text> 
-                         <View style={styles.columnMedia}>
+                        <View style={styles.columnMedia}>
                             <TouchableOpacity onPress={() => this.showDetail(this.props.navigation.state.params.detail[10])}>            
                                 <Image style={styles.iconMedia} source={facebook}/>
                             </TouchableOpacity>

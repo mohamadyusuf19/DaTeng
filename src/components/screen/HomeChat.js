@@ -6,12 +6,14 @@ import {
   StyleSheet,
   Keyboard,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  Image
 } from 'react-native';
 import LayoutChat from './LayoutChat';
 import Store from '../../Store';
 import HeaderFunction from '../common/HeaderFunction';
 
+const avatar = require('../../icon/user.png');
 class HomeChat extends React.Component {
   state = {
     name: '',
@@ -34,8 +36,9 @@ class HomeChat extends React.Component {
       <View style={LayoutChat.homeContainer}>
         <HeaderFunction text='Diskusi' onPress={() => this.props.navigation.goBack()}/>
         <View style={styles.textInputContainer}>
+          <Image source={avatar} style={{height: 20, width: 20}}/>
           <TextInput
-            placeholder='masukkan nama untuk diskusi'
+            placeholder='Masukkan nama untuk diskusi'
             value={this.state.name}
             onChangeText={(name) => {
               this.setState({name});
@@ -52,7 +55,7 @@ class HomeChat extends React.Component {
                 this.state.navigate('Channel')
                 AsyncStorage.setItem('user', JSON.stringify(this.state.name))
               }}>
-            <Text style={{color: "#2da2e5"}}>Masuk</Text>
+            <Text style={{color: "#000"}}>Masuk</Text>
         </TouchableOpacity>
       </View>
     );
@@ -62,17 +65,22 @@ class HomeChat extends React.Component {
 
 const styles = StyleSheet.create({
   textInputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 40,
     borderWidth: 1,
-    borderRadius: 3,
+    borderColor: '#2da2e5',
+    borderRadius: 50,
+    paddingLeft: 15,
     margin: 13,
     marginBottom: 7,
+    height: 40,
   },
   buttonContainer: {
     height: 40,
-    borderWidth: 1,
     borderRadius: 50,
-    borderColor: "#2da2e5",
+    backgroundColor: "#2da2e5",
     margin: 13,
     alignItems: "center",
     justifyContent: 'center',
