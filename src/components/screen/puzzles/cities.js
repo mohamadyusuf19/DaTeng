@@ -1,110 +1,62 @@
 export const Cities = [
     {
-        "answer": "Bangkok",
-        "hint": "A popular city in Thailand"
+        "answer": "Semarang",
+        "hint": "Ibu kota jawa tengah"
     },
     {
-        "answer": "London",
-        "hint": "The capital of England and the United Kingdom"
+        "answer": "Jakarta",
+        "hint": "Ibu kota indonesia"
     },
     {
-        "answer": "Paris",
-        "hint": "Is a major European city and a global center for art, fashion, gastronomy and culture"
+        "answer": "Rengasdengklok",
+        "hint": "Peristiwa penculikan yang dilakukan oleh sejumlah pemuda"
     },
     {
-        "answer": "Singapore",
-        "hint": "An island city-state off southern Malaysia"
+        "answer": "Hoax",
+        "hint": "Istilah dari berita palsu yang beredar"
     },
     {
-        "answer": "New York",
-        "hint": "A state in the northeastern United States"
+        "answer": "Agustus",
+        "hint": "Bulan kemerdekaan indonesia"
     },
     {
-        "answer": "Istanbul",
-        "hint": "Major city in Turkey"
+        "answer": "Bogor",
+        "hint": "Tempat istana negara Indonesia"
     },
     {
-        "answer": "Dubai",
-        "hint": "Is a city and emirate in the United Arab Emirates"
+        "answer": "Jakarta",
+        "hint": "Ibukota Indonesia"
     },
     {
-        "answer": "Kuala Lumpur",
-        "hint": "Capital of Malaysia"
+        "answer": "Surabaya",
+        "hint": "Kota pahlawan"
     },
     {
-        "answer": "Tokyo",
-        "hint": "Japan’s busy capital"
+        "answer": "Surabaya",
+        "hint": "Ibukota Jawa Timur"
     },
     {
-        "answer": "Seoul",
-        "hint": "The capital of South Korea"
+        "answer": "Bandung",
+        "hint": "Ibukota Jawa Barat"
     },
     {
-        "answer": "Hong Kong",
-        "hint": "Autonomous territory, and former British colony"
+        "answer": "Blitar",
+        "hint": "Tempat kelahiran Ir.Soekarno"
     },
     {
-        "answer": "Barcelona",
-        "hint": "City in Spain"
+        "answer": "Nganjuk",
+        "hint": "Tempat kelahiran Dr.Soetomo pendiri Budi Utomo"
     },
     {
-        "answer": "Amsterdam",
-        "hint": "Netherlands’ capital"
+        "answer": "Yogyakarta",
+        "hint": "Daerah Istimewa di Indonesia"
     },
     {
-        "answer": "Milan",
-        "hint": "A metropolis in Italy's northern Lombardy region"
+        "answer": "Bogor",
+        "hint": "Kota Hujan"
     },
     {
-        "answer": "Taipei",
-        "hint": "The capital of Taiwan"
-    },
-    {
-        "answer": "Rome",
-        "hint": "Italy’s capital"
-    },
-    {
-        "answer": "Osaka",
-        "hint": "Largest port city and commercial center on the Japanese island of Honshu"
-    },
-    {
-        "answer": "Vienna",
-        "hint": "Austria’s capital"
-    },
-    {
-        "answer": "Shanghai",
-        "hint": "Four direct-controlled municipalities of China"
-    },
-    {
-        "answer": "Prague",
-        "hint": "Capital city of the Czech Republic"
-    },
-    {
-        "answer": "Los Angeles",
-        "hint": "Center of the nation’s film and television industry"
-    },
-    {
-        "answer": "Madrid",
-        "hint": "Spain's central capital"
-    },
-    {
-        "answer": "Munich",
-        "hint": "Bavaria’s capital"
-    },
-    {
-        "answer": "Miami",
-        "hint": "International city at Florida's southeastern tip"
-    },
-    {
-        "answer": "Dublin",
-        "hint": "Capital of the Republic of Ireland"
-    },
-    {
-        "answer": "Delhi",
-        "hint": "India’s capital territory"
-    },
-    {
-        "answer": "Mumbai",
-        "hint": "Densely populated city on India’s west coast"
+        "answer": "Surakarta",
+        "hint": "Kota Tempat Kelahiran Ir.Joko Widodo"
     }
 ]

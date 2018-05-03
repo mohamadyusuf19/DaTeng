@@ -6,7 +6,7 @@ import Penyelenggaraan from './Penyelenggaraan';
 import Header from '../../common/Header'; 
 
 
-export default class Home extends Component {
+export default class Tahapan extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -25,9 +25,9 @@ export default class Home extends Component {
                 <ScrollableTabView
                     onChangeTab={(index) => this.handleChangeTab(index)}
                     tabBarUnderlineColor="#fff"
-                    tabBarUnderlineStyle={{backgroundColor: "#fff"}}
-                    tabBarBackgroundColor ="#d2d8e0"
-                    tabBarActiveTextColor="#000"
+                    tabBarUnderlineStyle={{backgroundColor: "transparent"}}
+                    tabBarBackgroundColor ="#2da2e5"
+                    tabBarActiveTextColor="#fff"
                     tabBarInactiveTextColor="#88b0ac"
                     tabBarPosition='bottom'
                     >

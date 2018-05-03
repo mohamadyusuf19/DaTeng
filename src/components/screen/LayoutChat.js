@@ -129,4 +129,56 @@ export default {
       );
     },
   },
+  GiftedChatBot: {
+    renderBubble(props) {
+      return (
+        <View>
+          {!props.isSameUser(props.currentMessage, props.previousMessage) ?
+            <Text style={{
+              color: '#aaa4a4',
+              marginBottom: 3,
+              fontSize: 16,
+              textAlign: props.currentMessage.user._id === props.user._id ? 'right' : 'left',
+              marginLeft: props.currentMessage.user._id === props.user._id ? 0 : 10,
+              marginRight: props.currentMessage.user._id === props.user._id ? 10 : 0,
+            }}>{props.currentMessage.user.name}</Text>
+            :
+            null
+          }
+          <Bubble
+            {...props}
+            wrapperStyle={{
+              right: {
+                backgroundColor: '#2974f4',
+              },
+              left:{
+                backgroundColor: "#7886e2",
+              }
+            }}
+          />
+        </View>
+      );
+    },
+    renderLoading() {
+      return (
+        <View style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <ActivityIndicator/>
+        </View>
+      )
+    },
+    renderSend(props) {
+      return (
+        <Send
+          {...props}
+          textStyle={{
+            color: darkColor,
+          }}
+        />
+      );
+    },
+  },
 };

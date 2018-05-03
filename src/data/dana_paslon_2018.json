@@ -7,7 +7,8 @@
   "waktu_penyerahan": "pukul 13.49 wib",
   "nama_kepala_daerah": "H. GANJAR PRANOWO, S.H., M.IP",
   "status_petahana": "YA",
-  "wilayah": "PROVINSI JAWA TENGAH"
+  "wilayah": "PROVINSI JAWA TENGAH",
+  "partai_pendukung": "PDI-P, PPP, DEMOKRAT, NASDEM "
   },
   {
   "nama_wakil_kepala_daerah": "Dra. IDA FAUZIAH",
@@ -17,6 +18,7 @@
   "waktu_penyerahan": "pukul 17.26 wib",
   "nama_kepala_daerah": "SUDIRMAN SAID",
   "status_petahana": "TIDAK",
-  "wilayah": "PROVINSI JAWA TENGAH"
+  "wilayah": "PROVINSI JAWA TENGAH",
+  "partai_pendukung": "GERINDRA, PKS, PAN, PKB"
   }
 ]

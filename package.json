@@ -11,6 +11,7 @@
     "firebase": "^4.12.1",
     "immutability-helper": "^2.6.6",
     "lodash": "^4.17.5",
+    "prop-types": "^15.6.1",
     "react": "16.3.1",
     "react-native": "0.55.2",
     "react-native-autogrow-input": "^0.2.1",

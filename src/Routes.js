@@ -14,6 +14,7 @@ import GameScreen from '../src/components/screen/GameScreen';
 import Persiapan from '../src/components/screen/tahapan/Persiapan';
 import Penyelenggaraan from '../src/components/screen/tahapan/Penyelenggaraan';
 import Home from './components/screen/Home';
+import ChatBot from '../src/components/screen/ChatBot';
 import Info from './components/screen/Info';
 import HomeChat from './components/screen/HomeChat';
 import Channels from './components/screen/Channels';
@@ -21,10 +22,23 @@ import Chat from './components/screen/Chat';
 import WebViewDetail from './components/screen/WebViewDetail';
 import BeritaPilkada from './components/screen/BeritaPilkada';
 import BeritaDetail from './components/screen/BeritaDetail';
+import Utama from './components/screen/Utama';
 
 const Navigasi = StackNavigator({
     Home: {
       screen: Home,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    ChatBot: {
+      screen: ChatBot,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    Utama: {
+      screen: Utama,
       navigationOptions: {
         header: null,
       },
@@ -53,6 +67,12 @@ const Navigasi = StackNavigator({
         title: "Anggaran",        
       },
     },  
+    Tahapan: {
+      screen: Tahapan,
+      navigationOptions: {
+        header: null
+      },
+    },
     Persiapan: {
       screen: Persiapan,
       navigationOptions: {

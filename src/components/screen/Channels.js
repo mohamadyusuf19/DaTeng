@@ -13,20 +13,26 @@ export default class Channels extends React.Component {
 
   state = { navigate: this.props.navigation.navigate }
 
+  onPress(selected) {
+    if (selected == "Bot") {
+      this.state.navigate("ChatBot", { channel: selected})
+    }else{
+      this.state.navigate("Chating", { channel: selected})
+    }
+  }
   renderRow(channelName) {
 
     return (
       
       <TouchableOpacity
-        onPress={() => {
-          this.state.navigate('Chating', { channel: channelName })
-      }}
-
+        onPress={() => this.onPress(channelName)}
       >
       <View style={{
             borderRadius: 20,              
             backgroundColor: "#2da2e5", 
-            height: 40, margin: 18, 
+            height: 40, 
+            margin: 10,
+            marginBottom: 10, 
             justifyContent: 'center',
             elevation: 1,
             shadowOpacity: 0.1,
@@ -51,6 +57,7 @@ export default class Channels extends React.Component {
         {this.renderRow('Diskusi Partai')}
         {this.renderRow('Diskusi Santai')}
         {this.renderRow('Diskusi Permainan')}
+        {this.renderRow('Bot')}
       </ScrollView>
       </View>
     );

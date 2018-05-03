@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button, TouchableHighlight, Alert } from 'react-native';
 import HeaderFunction from '../common/HeaderFunction'
 
-import { Circle, G, Line, Rect, Svg } from 'react-native-svg';
-
 import { Puzzles } from './puzzles/index';
 import GameScreen from './GameScreen';
 
@@ -11,7 +9,7 @@ export default class HomeScreen extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        let title = ["H","A","N","G","M","A","N"]
+        let title = ["I","S","I","K","A","T","A"]
         return (
             <View style={{flex: 1}}>
                 <HeaderFunction 
@@ -19,14 +17,6 @@ export default class HomeScreen extends React.Component {
                     text="Permainan"
                 />
                 <View style={styles.homeContainer}>
-                    <Svg version="1.1" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" class="svg-content" width="250" height="250">
-                        <Rect fill="#053544" width="10" height="400" x="20" y="0" />
-                        <Rect fill="#053544" width="300" height="10" x="20" y="0" />
-                        <Rect fill="#053544" width="300" height="10" x="0" y="400" />
-                        <Line x1="250" y1 = "0" x2="250" y2 = "120" stroke="#895917" strokeWidth="5"/>
-                        <Circle cx="250" cy="150" r="30" fill="#ecd2b7" />
-                        <Rect width="10" height="100" x="245" y="150" fill="#ecd2b7"/><Line x1="250" y1="200" x2="220" y2="230" stroke="#ecd2b7" stroke-Linecap="round" strokeWidth="10" id="handLeft"/><Line x1="250" y1="200" x2="280" y2="230" stroke="#ecd2b7" stroke-Linecap="round" strokeWidth="10" id="handRight"/><Line x1="250" y1="250" x2="230" y2="300" stroke="#ecd2b7" stroke-Linecap="round" strokeWidth="10" id="legLeft"/><Line x1="250" y1="250" x2="270" y2="300" stroke="#ecd2b7" stroke-Linecap="round" strokeWidth="10" id="legRight"/>
-                    </Svg>
                     <View style={styles.gameTitleView}>
                     {title.map((titleItem,index)=>{
                         return <Text key={index} style={styles.gameTitle}>{titleItem}</Text>

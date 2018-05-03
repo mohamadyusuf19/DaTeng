@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
+import {  View, Text, StyleSheet, Image, ScrollView, Dimensions,TouchableOpacity } from 'react-native';
 import HeaderHome from '../common/HeaderHome';
 import StyleRes from './StyleRes';
 import Tts from 'react-native-tts';
@@ -23,7 +23,7 @@ export default class Home extends Component {
             />     
             <View style={{ flex: 1 }}> 
                 <View style={styles.row}>
-                    <TouchableOpacity onLongPress={() => this.speech("Info")} style={styles.card} onPress={() => this.state.navigate('Paslon')}>
+                    <TouchableOpacity onLongPress={() => this.speech("Info")} style={styles.card} onPress={() => this.state.navigate('Utama')}>
                         <Image source={require('../../icon/globe.png')} style={styles.icon} />
                         <Text style={styles.text}>Info</Text>
                     </TouchableOpacity>

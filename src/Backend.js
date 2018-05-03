@@ -13,14 +13,14 @@ class Backend {
   init() {
     if (!firebase.apps.length) {
       var config = {
-        apiKey: "AIzaSyC1yFSnKewLBz9oqX0DD1XcBZ-BH3SKnAA",
-        authDomain: "dateng-e088e.firebaseapp.com",
-        databaseURL: "https://dateng-e088e.firebaseio.com",
-        projectId: "dateng-e088e",
-        storageBucket: "dateng-e088e.appspot.com",
-        messagingSenderId: "106242181369"
+        apiKey: "AIzaSyAb6WLcoIv0K0jqgiJY--3jd52BkbgI0NU",
+        authDomain: "dateng-a4676.firebaseapp.com",
+        databaseURL: "https://dateng-a4676.firebaseio.com",
+        projectId: "dateng-a4676",
+        storageBucket: "dateng-a4676.appspot.com",
+        messagingSenderId: "57441019396"
       };
-      firebase.initializeApp(config);
+      firebase.initializeApp(config);    
     }
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

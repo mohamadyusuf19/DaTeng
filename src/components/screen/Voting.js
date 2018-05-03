@@ -71,27 +71,27 @@ export default class Voting extends Component {
                 {
                 values: [
                     {
-                    y: 65,
+                    y: 0,
                     marker: "65 %"
                     },
                     {
-                    y: 77,
+                    y: 5,
                     marker: "77 %"
                     },
                     {
-                    y: 76,
+                    y: 5,
                     marker: "76 %"
                     },
                     {
-                    y: 74,
+                    y: 6,
                     marker: "74 %"
                     },
                     {
-                    y: 76,
+                    y: 7,
                     marker: "76 %"
                     },
                     {
-                    y: 65,
+                    y: 10,
                     marker: "65 %"
                     }
                 ],
@@ -118,9 +118,9 @@ export default class Voting extends Component {
                     }
                 },
                 {
-                    values: [35, 40, 77, 81, 43, 40],
-                      label: '<labeldata>',
-                      config: {
+                    values: [5, 2, 5, 7, 8, 13],
+                        label: '<labeldata>',
+                        config: {
                         mode: "CUBIC_BEZIER",
                         drawValues: false,
                         lineWidth: 2,
@@ -139,7 +139,7 @@ export default class Voting extends Component {
                         },
                         fillAlpha: 1000,
                         valueTextSize: 15
-                      }
+                    }
                 }
             ]
             }
